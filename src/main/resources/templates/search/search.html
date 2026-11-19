@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ja"
+      layout:decorate="~{commons/layout}">
+<head></head>
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="text-center">
+                <h2 th:text="#{title.product.search}"></h2>
+                <form class="form-inline d-inline-block my-2 my-lg-0" th:action="@{/exercise/product/search}" method="post" th:object="${keywordForm}">
+                    <div class="row mb-3 justify-content-center">
+                        <input type="search" class="form-control mr-sm-2" id="keyword" placeholder="キーワード" th:field="*{keyword}">
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col text-center justify-content-center">
+                            <button type="submit" name="end" class="btn btn-success" th:text="#{button.end}"></button>
+                            <button type="submit" name="search" class="btn btn-primary" th:text="#{button.search}"></button>
+                        </div>
+                    </div>
+                    <div class="row mb-3 justify-content-center" style="color:red;">
+                        <ul>
+                            <li th:each="error : ${#fields.detailedErrors()}">
+                                <span th:text="${error.message}">Error message</span>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+            <p>
+            <div th:if="${products != null}">
+                <table class="table">
+                    <thead class="table-success">
+                    <tr>
+                        <th scope="col">商品Id</th>
+                        <th scope="col">商品名</th>
+                        <th scope="col">単価</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="product : ${products}">
+                        <td th:text="${product.productId.value}"></td>
+                        <td>
+                            <a th:href="@{/exercise/product/update/{id}(id=${product.productId.value})}" th:text="${product.productName.value}"></a>
+                        </td>
+                        <td th:text="${product.productPrice.value}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            </p>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+</body>
+</html>

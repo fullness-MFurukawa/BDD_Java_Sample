@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ja"
+      layout:decorate="~{commons/layout}">
+<head>
+</head>
+<body>
+<div layout:fragment="header">
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-success mt-3 mb-3">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">Javaで実践するビヘイビア駆動型開発</a>
+            <div class="collapse navbar-collapse justify-content-end">
+                <div class="navbar-nav">
+                    <div class="nav-item">
+                        <a class="nav-link" href="/exercise/product/search">キーワード検索</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="/exercise/product/register">商品登録</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
+</body>
+</html>

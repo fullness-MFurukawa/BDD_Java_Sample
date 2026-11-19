@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/bdd-exercise
+    username: postgres
+    password: postgres
+    type: com.zaxxer.hikari.HikariDataSource
+  messages:
+    encoding: UTF-8
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+logging:
+  level:
+    jdbc.sqlonly: DEBUG  # JDBC経由のSQLログを出力
+    org:
+      mybatis: DEBUG  # MyBatisの全体的なSQLログをDEBUGレベルで出力
+      mybatis.spring.SqlSessionFactoryBean: DEBUG  # MyBatisのSQLセッションファクトリをデバッグ出力
+      springframework: WARN
+mybatis:
+  check-config-location: true
+  type-aliases-package: jp.co.fullness.bdd.infrastructures.mybatis.*
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30

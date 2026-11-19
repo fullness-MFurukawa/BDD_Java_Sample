@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ja"
+      layout:decorate="~{commons/layout}">
+<head></head>
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="text-center">
+                <h2 th:text="#{title.product.update}"></h2>
+                <form class="form-inline d-inline-block my-2 my-lg-0" th:action="@{/exercise/product/update}" method="post" th:object="${updateForm}">
+                    <div class="row mb-3 justify-content-center">
+                        <div class="col-sm-4"><label for="id" class="col-form-label" th:text="#{label.product.id}"></label></div>
+                        <div class="col-sm-8"><input type="text" size="37" class="form-control" id="id" th:field="*{id}" th:value="${id}" readonly></div>
+                    </div>
+                    <div class="row mb-3 justify-content-center">
+                        <div class="col-sm-4"><label for="name" class="col-form-label" th:text="#{label.product.name}"></label></div>
+                        <div class="col-sm-8"><input type="text" class="form-control" id="name" placeholder="商品名を入力"  th:field="*{name}" th:value="${name}"></div>
+                    </div>
+                    <div class="row mb-3 justify-content-center">
+                        <div class="col-sm-4"><label for="price" class="col-form-label" th:text="#{label.product.price}"></label></div>
+                        <div class="col-sm-8"><input type="number" class="form-control" id="price" placeholder="単価を入力"  th:field="*{price}" th:value="${price}"></div>
+                    </div>
+                    <div class="col text-center">
+                        <button type="submit" name="end" class="btn btn-success" th:text="#{button.end}"></button>
+                        <button type="submit" name="update"  class="btn btn-primary" th:text="#{button.update}"></button>
+                    </div>
+                    <div class="row mb-3 justify-content-center" style="color:red;">
+                        <ul>
+                            <li th:each="error : ${#fields.detailedErrors()}">
+                                <span th:text="${error.message}">Error message</span>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+</body>
+</html>

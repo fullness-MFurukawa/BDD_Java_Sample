@@ -1,0 +1,21 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.fullness.bdd.infrastructures.mybatis.categories.CategoryMapper">
+    <!-- findAll()メソッド用SQLの定義 -->
+    <select id="findAll" resultType="CategoryTableModel">
+        <![CDATA[
+            SELECT id , obj_id AS objId , name
+            FROM category
+            ORDER BY id ASC
+        ]]>
+    </select>
+    <!-- findById()メソッド用SQLの定義 -->
+    <select id="findById" resultType="CategoryTableModel">
+        <![CDATA[
+            SELECT id , obj_id AS objId, name
+            FROM category
+            WHERE obj_id = #{categoryId}
+        ]]>
+    </select>
+</mapper>
